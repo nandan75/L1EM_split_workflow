@@ -1,0 +1,39 @@
+#!/bin/bash
+
+#PBS -N nf_L1EM_subset
+#PBS -P ew19
+#PBS -q normalbw
+#PBS -l ncpus=1
+#PBS -l mem=4GB
+#PBS -l walltime=48:00:00
+#PBS -M ndeshpande@ccia.org.au
+#PBS -m ae
+#PBS -j oe
+#PBS -l storage=gdata/ew19+gdata/ug9+gdata/if89+scratch/xw67+scratch/ew19
+
+# Load nextflow module
+module load java/jdk-17.0.2 nextflow/24.04.1
+
+cd $PBS_O_WORKDIR
+
+mkdir -p cache_dirs/{singularity_cache,nextflow_singularity_cache,singularity_temp}
+
+export CACHE_BASE=$(pwd)/cache_dirs
+export SINGULARITY_CACHEDIR="$CACHE_BASE/singularity_cache"
+export NXF_SINGULARITY_CACHEDIR="$CACHE_BASE/nextflow_singularity_cache"
+export SINGULARITY_TMPDIR="$CACHE_BASE/singularity_temp"
+
+export SINGULARITY_MOUNT_TIMEOUT=900
+export NXF_JAVA_OPTIONS="-Xmx120G"  # Adjust as needed
+
+
+
+# Samplesheet
+
+#SAMPLES_FILE="samplesheet.csv"
+SAMPLES_FILE="samplesheet_subset.csv"
+
+# Run TN L1 only
+nextflow run main.nf -resume --samples "$SAMPLES_FILE"
+
+

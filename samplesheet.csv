@@ -1,0 +1,2 @@
+sample_id,rna_tumor_path,rna_tumor_bai_path
+P017304-383895-T-R,/scratch/ew19/nandan/tools/L1EM/create_custom_reference/P017304-383895-T-R.sorted.rmdup.hs38.bam,/scratch/ew19/nandan/tools/L1EM/create_custom_reference/P017304-383895-T-R.sorted.rmdup.hs38.bam.bai
