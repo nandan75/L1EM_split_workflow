@@ -17,8 +17,10 @@ nextflow.enable.dsl=2
 include { download_git_and_references } from './modules/download_git_and_references'
 
 // Run L1EM
-include { run_L1EM } from './modules/run_L1EM'
-
+//include { run_L1EM } from './modules/run_L1EM'
+include { realign_and_split_reads } from './modules/realign_and_split_reads'
+include { make_gr_matrix } from './modules/make_gr_matrix'
+include { expectation_maximization } from './modules/expectation_maximization'
 
 
 // Print a header for your pipeline
@@ -98,7 +100,16 @@ workflow {
 
 
     // Run L1EM
-    run_L1EM(bamFilesChannel,L1EM_PATH)
+    //run_L1EM(bamFilesChannel,params.ref_genome, L1EM_PATH)
+
+    realign_and_split_reads(bamFilesChannel, params.ref_genome, L1EM_PATH)
+    split_fqs = realign_and_split_reads.out.split_fqs
+    idL1reads = realign_and_split_reads.out.idL1reads 
+
+    make_gr_matrix(bamFilesChannel,split_fqs,idL1reads,L1EM_PATH)
+    baminfo = make_gr_matrix.out.baminfo
+    G_of_R = make_gr_matrix.out.G_of_R
+    expectation_maximization(baminfo,G_of_R,L1EM_PATH)
 
 
 }

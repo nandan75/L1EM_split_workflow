@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#PBS -N nf_L1EM_subset
+#PBS -N nf_L1EM_test2Samples
 #PBS -P ew19
 #PBS -q normalbw
 #PBS -l ncpus=1
@@ -31,7 +31,9 @@ export NXF_JAVA_OPTIONS="-Xmx120G"  # Adjust as needed
 # Samplesheet
 
 #SAMPLES_FILE="samplesheet.csv"
-SAMPLES_FILE="samplesheet_subset.csv"
+#SAMPLES_FILE="samplesheet_subset.csv"
+SAMPLES_FILE="samplesheet_test.csv"
+
 
 # Run TN L1 only
 nextflow run main.nf -resume --samples "$SAMPLES_FILE"
