@@ -28,8 +28,14 @@ BASE_DIR=$(pwd)
 bamfile_abs="$BASE_DIR/$bamfile"
 
 # Paths
-L1EM_bed=/scratch/ew19/nandan/tools/L1EM/installation/L1EM/annotation/default_index_files/L1EM.400.bed
-L1EM_fa=/scratch/ew19/nandan/tools/L1EM/installation/L1EM/annotation/default_index_files/L1EM.400.fa
+#L1EM_bed=/scratch/ew19/nandan/tools/L1EM/installation/L1EM/annotation/default_index_files/L1EM.400.bed
+#L1EM_fa=/scratch/ew19/nandan/tools/L1EM/installation/L1EM/annotation/default_index_files/L1EM.400.fa
+
+L1EM_bed=/g/data1a/ew19/CB/nandan/tools_installtions/L1EM_install/L1EM_refs/L1EM_bed_file/L1EM.400.bed
+L1EM_fa=/g/data1a/ew19/CB/nandan/tools_installtions/L1EM_install/L1EM/annotation/L1EM.400.fa
+
+
+
 L1EM_code_dir="${L1EM_directory}/L1EM/"
 L1EM_utilities_dir="${L1EM_directory}/utilities/"
 L1EM_CGC_dir="${L1EM_directory}/CGC/"
