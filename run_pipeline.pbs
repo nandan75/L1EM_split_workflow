@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #PBS -N nf_L1EM_test2Samples
-#PBS -P ew19
+#PBS -P xw67
 #PBS -q normalbw
 #PBS -l ncpus=1
 #PBS -l mem=4GB
@@ -30,9 +30,7 @@ export NXF_JAVA_OPTIONS="-Xmx120G"  # Adjust as needed
 
 # Samplesheet
 
-#SAMPLES_FILE="samplesheet.csv"
-#SAMPLES_FILE="samplesheet_subset.csv"
-SAMPLES_FILE="samplesheet_test.csv"
+SAMPLES_FILE="samplesheet_first.csv"
 
 
 # Run TN L1 only
