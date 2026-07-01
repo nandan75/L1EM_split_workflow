@@ -1,0 +1,2 @@
+sample_id,rna_tumor_path,rna_tumor_bai_path
+zero_sample_test,/scratch/ew19/nandan/nextflow/2026/L1EM/test_nf/01-0046-397143-T-R.sorted.rmdup.hs38.bam,/scratch/ew19/nandan/nextflow/2026/L1EM/test_nf/01-0046-397143-T-R.sorted.rmdup.hs38.bam.bai

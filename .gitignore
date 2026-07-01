@@ -15,6 +15,8 @@ dist/
 
 # Log files
 *.log
+*.log.*
+*.o*
 
 # Package files
 *.jar
@@ -48,3 +50,6 @@ Thumbs.db
 *.mov
 *.wmv
 
+# nextflow related
+work*
+results

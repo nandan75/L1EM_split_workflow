@@ -1,5 +1,6 @@
 process make_gr_matrix {
     tag "$sample_id" 
+    errorStrategy 'ignore' // Ignore errors 
  
     input:
         tuple val(sample_id), path(rna_tumor), path(rna_tumor_bai)	
@@ -13,10 +14,14 @@ process make_gr_matrix {
 
     script:
     """
+    module purge
     module load singularity
     module load bwa
     module load samtools
     module load python3/3.12.1
+
+    # Enable error handling but continue the script on failure
+    set +e
 
     rna_tumor=\$(realpath "${rna_tumor}")
     rna_tumor_bai=\$(realpath "${rna_tumor_bai}")

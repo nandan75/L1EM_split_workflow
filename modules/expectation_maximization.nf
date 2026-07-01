@@ -1,6 +1,8 @@
 process expectation_maximization {
-  
+
+    errorStrategy 'ignore' // Ignore errors  
     tag "$sample_id"
+
     publishDir "${params.outdir}/${sample_id}/", mode: 'copy'	
 
 
@@ -17,11 +19,15 @@ process expectation_maximization {
 
     script:
     """
+    module purge
     module load singularity
     module load bwa
     module load samtools
     module load python3/3.12.1 
-
+   
+    # Enable error handling but continue the script on failure
+    set +e
+  
 
     L1EM_PATH=\$(realpath "${L1EM_PATH}")
     baminfo=\$(realpath "${baminfo}")

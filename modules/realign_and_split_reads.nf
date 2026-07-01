@@ -1,5 +1,5 @@
 process realign_and_split_reads {
-
+    errorStrategy 'ignore' // Ignore errors
     tag "$sample_id"
 
     input:
@@ -14,10 +14,14 @@ process realign_and_split_reads {
 
     script:
     """
+    module purge
     module load singularity
     module load bwa
     module load samtools
     module load python3/3.12.1
+
+    # Enable error handling but continue the script on failure
+    set +e
 
     rna_tumor=\$(realpath "${rna_tumor}")
     rna_tumor_bai=\$(realpath "${rna_tumor_bai}")
